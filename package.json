@@ -1,0 +1,35 @@
+{
+  "name": "nodejs-pkce",
+  "version": "1.0.0",
+  "description": "PKCE Code Challenge Generator for Node.js Application",
+  "keywords": [
+    "pkce",
+    "oauth2",
+    "oidc",
+    "nodejs"
+  ],
+  "homepage": "https://github.com/dheanka10px/nodejs-pkce#readme",
+  "bugs": {
+    "url": "https://github.com/dheanka10px/nodejs-pkce/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dheanka10px/nodejs-pkce.git"
+  },
+  "license": "MIT",
+  "author": "dheanka10px",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.5",
+    "typescript": "^5.9.3"
+  }
+}
