@@ -1,6 +1,6 @@
 import { webcrypto } from "node:crypto";
 
-type PkceCodeChallengeMethodType = "plain" | "S256";
+export type PkceCodeChallengeMethodType = "plain" | "S256";
 
 export type PkcePairType = {
   codeVerifier: string;
@@ -35,7 +35,7 @@ export async function getCryptoInstance(): Promise<Crypto> {
 
 export async function generatePkcePair(
   length: number = 43,
-  method: PkceCodeChallengeMethodType,
+  method: PkceCodeChallengeMethodType = "S256",
 ): Promise<PkcePairType> {
   const codeVerifier = await generatePkceCodeVerifier(length);
   const codeChallenge = await generatePkceCodeChallenge(codeVerifier, method);
@@ -46,6 +46,9 @@ export async function generatePkcePair(
 export async function generatePkceCodeVerifier(
   length: number = 43,
 ): Promise<string> {
+  if (length < 43 || length > 128) {
+    throw new Error("PKCE code_verifier length must be between 43 and 128");
+  }
   return await generateRandomString(length);
 }
 
